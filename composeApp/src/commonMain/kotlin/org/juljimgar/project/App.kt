@@ -84,8 +84,12 @@ fun App(modifier: Modifier = Modifier) {
 
             Row(Modifier.fillMaxWidth(1.0f)) {
                 Text(
-                    text = if (resultado.isNotEmpty()) "Resultado: $resultado" else "VACIO",
-                    modifier = Modifier.background(Color.Red).padding(50.dp)
+                    if( metrosCubicos.isNotEmpty() && ph.isNotEmpty() && gramos.isNotEmpty()){
+                        calcularResultado(metrosCubicos.toString(), ph.toString(),gramos.toString())
+                    }else{
+                        "VACIo"
+                    },
+                    modifier = Modifier.background(Color.Red).padding(50.dp).testTag("resultado")
                 )
             }
         }
@@ -93,10 +97,11 @@ fun App(modifier: Modifier = Modifier) {
 
 
     fun calcularResultado(metrosCubicos: String, ph: String, gramos: String): String {
+
         return try {
-            val mCubicos = if (metrosCubicos.isNotEmpty()) metrosCubicos.toDouble() else 0.0
-            val phValue = if (ph.isNotEmpty()) ph.toDouble() else 0.0
-            val gramosValue = if (gramos.isNotEmpty()) gramos.toDouble() else 0.0
+            val mCubicos = metrosCubicos.toDouble()
+            val phValue = ph.toDouble()
+            val gramosValue = gramos.toDouble()
 
             val operacion = (7.4 - phValue) * 10 * mCubicos * gramosValue
             operacion.toString()

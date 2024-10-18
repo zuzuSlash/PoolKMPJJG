@@ -32,7 +32,7 @@ kotlin {
         }
         binaries.executable()
     }
-    
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -41,9 +41,9 @@ kotlin {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
     }
-    
+
     jvm("desktop")
-    
+
     sourceSets {
         val desktopMain by getting
         val desktopTest by getting
@@ -108,8 +108,8 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4- android:1.6.8")
-            debugImplementation("androidx.compose.ui:ui-test- manifest:1.6.8")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4-android:1.6.8")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.8")
 
 }
 
